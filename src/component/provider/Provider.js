@@ -379,7 +379,6 @@ var truffleAddress = '0x609755f2afd16979c4793fd0caa861976ab5fff2';
 class Provider extends Component {
   // INIT State
   constructor(props) {
-    debugger;
     super(props);
     web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'));
     let test = web3.eth.contract(abi).at(truffleAddress);

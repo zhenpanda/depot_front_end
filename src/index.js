@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/materialize.css';
-import './css/style.css';
+import '../node_modules/toastr/build/toastr.min.css';
 
 // import redux library
 import { Provider } from 'react-redux';

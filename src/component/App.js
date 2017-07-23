@@ -1,10 +1,11 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import '../css/style.css';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="">
         {this.props.children}
       </div>
     )
