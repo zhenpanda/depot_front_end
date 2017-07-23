@@ -17,6 +17,7 @@
     "react-scripts": "0.9.5",
     "style-loader": "^0.17.0",
     "webpack": "^1.12.9",
+    "toastr": "2.1.2",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
@@ -33,7 +34,8 @@
     "redux": "^3.0.4",
     "redux-async-initial-state": "^0.2.0",
     "redux-form": "^6.6.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "web3": "^0.19.1"
   },
   "scripts": {
     "start": "react-scripts start",
