@@ -31,7 +31,7 @@ class Home extends Component {
           </div>
           <div className="col s2"></div>
           <div className="col s4">
-            <Link to="provider">
+            <Link to="requestor">
               <img className="waves-effect grey lighten-5 btn" src={ requestor } />
               <div className="requestor-text">
                 <div>Gain accesss to logistics</div>

@@ -24,6 +24,8 @@
     "axios": "^0.16.1",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-bundle": "^1.12.1",
     "lodash": "^3.10.1",
     "materialize-css": "^0.98.2",
     "react": "^0.14.3",

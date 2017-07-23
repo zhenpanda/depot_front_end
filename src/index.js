@@ -13,6 +13,7 @@ import reduxThunk from 'redux-thunk';
 import App from './component/App';
 import Home from './component/home/Home';
 import Providers from './component/provider/Provider';
+import Requestor from './component/requestor/Requestor';
 
 // load in created reducers
 import reducers from './reducers';
@@ -26,6 +27,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="provider" component={Providers} />
+        <Route path="requestor" component={Requestor} />
       </Route>
     </Router>
   </Provider>,

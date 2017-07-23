@@ -68,6 +68,33 @@
   margin: auto;
   width:160px;
 }
+
+.requestor-header {
+  margin-top: 3px;
+  margin-bottom: 20px;
+}
+.left-nug {
+  padding-top: 15px;
+  margin-left: 18px;
+}
+.white-label{
+  color: white;
+}
+.truck-font {
+  margin: 4px;
+}
+.chooices {
+  font-size: 8px !important;
+}
+.choice-mid{
+  width: 30%;
+}
+.choice-last{
+  width: 20%;
+}
+.choice-end{
+  width: 10%;
+}
 .lable-text {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
