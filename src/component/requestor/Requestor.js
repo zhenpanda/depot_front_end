@@ -31,6 +31,18 @@ class Requestor extends Component {
     $(window).scrollTop(0);
     console.log("loading component....");
     let vehicles = [];
+    function timeConverter(UNIX_timestamp){
+      var a = new Date(UNIX_timestamp * 1000);
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var year = a.getFullYear();
+      var month = months[a.getMonth()];
+      var date = a.getDate();
+      var hour = a.getHours();
+      var min = a.getMinutes();
+      var sec = a.getSeconds();
+      var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+      return time;
+    }
     function humanize(warehouses, dates) {
       let readableWarehouse = [];
       let properties = [
@@ -58,8 +70,10 @@ class Requestor extends Component {
       if (dates) {
         for (var j = 0; j < dateProperties.length; j++) {
           for (var i = 0; i < warehouses[0].length; i++) {
+            // console.log(warehouses[j][i]);
             warehouses[j][i] = new Date(dates[j][i].toString() * 1000);
             readableWarehouse[i][dateProperties[j].name] = warehouses[j][i];
+            // console.log(readableWarehouse[i][dateProperties[j].name]);
           }
         }
       }
@@ -69,6 +83,7 @@ class Requestor extends Component {
       this.state.vehicleDates((err1,res1) => {
         // console.log(humanize(res,res1));
         let data = humanize(res,res1);
+        // console.log(data);
         let cities = {};
         data.map((e) => {
           // console.log(e.beginningCity);
@@ -83,11 +98,9 @@ class Requestor extends Component {
           onAutocomplete: function(val) {
             self.state.vehiclesByCity(val, (err, res) => {
               // console.log(err);
-              self.state.vehicleDates((err1,res1) => {
+              self.state.vehicleDatesByCity(val, (err1,res1) => {
                 // debugger;
                 // console.log(humanize(res,res1));
-
-                debugger;
                 let data = humanize(res,res1);
                 let btnAry = [];
                 $( "#attach-to-me" ).empty();
@@ -107,21 +120,50 @@ class Requestor extends Component {
                       +"<button class='btn blue darken-1 choice-last' type='submit' name='action'>Price:"
                       +e.pricePerCubicFootPerDuration
                       +"</button>"
+                      +"<button class='btn light-green darken-2 choice-space' type='submit' name='action'>SA:"
+                      +e.spaceAvailable
+                      +"</button>"
                       +"</li></ul>" );
                   btnAry.push('trucking_'+i)
                 });
+                $( "#attach-to-me" ).append("<div id='last_table'></div>");
+
                 console.log(btnAry);
 
                 btnAry.map((e,i,a) => {
                   $( "#"+e ).click(function() {
                     // console.log("Your clicked "+ e);
-                    this.state.purchaseVehicleSpace(data[i].owner, 1,1, {from:web3.eth.coinbase, value:data[i].pricePerCubicFootPerDuration},(err, res) => {
+                    self.state.purchaseVehicleSpace(data[i].owner, 1,1, {from:web3.eth.coinbase, value:data[i].pricePerCubicFootPerDuration},(err, res) => {
                       console.log(res);
+                      toastr.success('Service Aquired!');
+                      toastr.success('Transaction hash: '+ res);
+                      // self.state.vehicles()
+
+                      // create id
+                      self.state.Agreement({requestor:web3.eth.coinbase},{fromBlock:0,toBlock:"latest"}).get((err,res) => {
+                        console.log(res);
+
+                        var container = $("#last_table"),
+                        table = $('<table class="highlight"><thead><tr><th>Block Num</th><th>Transaction Hash</th><th>Paid</th><tbody></tbody></table>');
+
+                          // debugger;
+                          res.map((e) => {
+                              var tr = $('<tr>');
+                              ['blockNumber', 'transactionHash', 'money'].forEach(function(attr) {
+                                if(attr == "money")
+                                  tr.append('<td>' + e.args.amount.c + '</td>');
+                                else
+                                  tr.append('<td>' + e[attr] + '</td>');
+                              });
+                              table.append(tr);
+                            // console.log(e.blockNumber);
+                          })
+                        container.append(table);
+                      })
                     })
                   })
                 })
                 // debugger;
-
 
               })
             })

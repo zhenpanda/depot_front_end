@@ -87,13 +87,16 @@
   font-size: 8px !important;
 }
 .choice-mid{
-  width: 30%;
+  width: 25%;
 }
 .choice-last{
   width: 20%;
 }
 .choice-end{
   width: 10%;
+}
+.choice-space {
+  width: 14%;
 }
 .lable-text {
   -webkit-touch-callout: none;

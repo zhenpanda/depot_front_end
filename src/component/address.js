@@ -521,6 +521,28 @@ const address = {
       "inputs": [
         {
           "indexed": true,
+          "name": "requestor",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "seller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Agreement",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
           "name": "_from",
           "type": "address"
         },
@@ -561,7 +583,7 @@ const address = {
       "type": "event"
     }
   ],
-  truffleAddress : '0xac6b7e72b35e2d2a0f7a4f85d73e0bb621f5dcc9'
+  truffleAddress : '0xc8fc2a2725149b493309d4a8a3bd9343318d0014'
 }
 
 export { address as default };
