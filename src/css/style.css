@@ -47,6 +47,35 @@
   font-size: 16px;
 }
 
+.provider-page {
+  margin-top: 3px;
+}
+.provider-header {
+  margin-bottom: 25px;
+}
+.card-inside {
+  padding: 6px;
+  margin: 6px;
+}
+.dates{
+  margin-top: 60px;
+  margin-bottom: 5px;
+}
+
+.submit-main {
+  padding-top: 50px;
+  padding-bottom: 60px;
+  margin: auto;
+  width:160px;
+}
+.lable-text {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 @media (min-width: 768px) {
     .container{
         width:600px;
