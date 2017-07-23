@@ -1,2 +1,2 @@
 # depot_front_end
-front-end for decentralized warehouse renting app
+front-end for decentralized mobile warehouse and logicstics 
